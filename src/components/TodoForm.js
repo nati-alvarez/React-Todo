@@ -6,13 +6,13 @@ export default class TodoForm extends React.Component {
     }
     render(){
         return (
-            <form onSubmit={this.props.createTodo}>
+            <form onSubmit={e=>e.preventDefault()}>
                 <label>
                     Enter the task: 
                     <input onChange={this.props.updateFormData} value={this.props.formData.task} type="text" name="task"/>
                 </label>
-                <button>Add Todo</button>
-                <button>Clear Completed</button>
+                <button onClick={this.props.createTodo}>Add Todo</button>
+                <button onClick={this.props.clearCompleted}>Clear Completed</button>
             </form>
         )
     }

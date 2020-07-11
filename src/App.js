@@ -17,7 +17,6 @@ class App extends React.Component {
     }
   }
   createTodo = e => {
-    e.preventDefault();
     this.setState({
       ...this.state,
       formData: {
@@ -46,6 +45,12 @@ class App extends React.Component {
       })
     });
   }
+  clearCompleted = ()=>{
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.filter(todo=> todo.completed === false)
+    });
+  }
   updateFormData = e =>{
     this.setState({
       ...this.state, 
@@ -59,7 +64,7 @@ class App extends React.Component {
     return (
       <div>
         <h2>Todo App!</h2>
-        <TodoForm createTodo={this.createTodo} formData={this.state.formData} updateFormData={this.updateFormData}/>
+        <TodoForm clearCompleted={this.clearCompleted} createTodo={this.createTodo} formData={this.state.formData} updateFormData={this.updateFormData}/>
         <TodoList toggleCompleted={this.toggleCompleted} todos={this.state.todos}/>
       </div>
     );
