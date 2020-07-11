@@ -16,6 +16,24 @@ class App extends React.Component {
       }
     }
   }
+  createTodo = e => {
+    e.preventDefault();
+    this.setState({
+      ...this.state,
+      formData: {
+        ...this.state.formData,
+        task: ""
+      },
+      todos: [
+        ...this.state.todos,
+        {
+          id: Date.now(),
+          task: this.state.formData.task,
+          completed: false
+        }
+      ]
+    })
+  }
   updateFormData = e =>{
     this.setState({
       ...this.state, 
@@ -29,7 +47,7 @@ class App extends React.Component {
     return (
       <div>
         <h2>Todo App!</h2>
-        <TodoForm formData={this.state.formData} updateFormData={this.updateFormData}/>
+        <TodoForm createTodo={this.createTodo} formData={this.state.formData} updateFormData={this.updateFormData}/>
         <TodoList todos={this.state.todos}/>
       </div>
     );

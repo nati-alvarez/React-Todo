@@ -6,7 +6,7 @@ export default class TodoForm extends React.Component {
     }
     render(){
         return (
-            <form>
+            <form onSubmit={this.props.createTodo}>
                 <label>
                     Enter the task: 
                     <input onChange={this.props.updateFormData} value={this.props.formData.task} type="text" name="task"/>
