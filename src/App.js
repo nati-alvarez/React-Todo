@@ -10,14 +10,26 @@ class App extends React.Component {
   constructor(){
     super();
     this.state = {
-      todos: []
+      todos: [],
+      formData: {
+        task: ""
+      }
     }
+  }
+  updateFormData = e =>{
+    this.setState({
+      ...this.state, 
+      formData: {
+        ...this.state.formData,
+        task: e.target.value
+      }
+    });
   }
   render() {
     return (
       <div>
         <h2>Todo App!</h2>
-        <TodoForm/>
+        <TodoForm formData={this.state.formData} updateFormData={this.updateFormData}/>
         <TodoList todos={this.state.todos}/>
       </div>
     );
