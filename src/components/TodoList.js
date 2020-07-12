@@ -11,7 +11,9 @@ export default class TodoList extends React.Component {
         return (
             <main className="todos">
                 {this.props.todos.map(todo=>{
-                    return <Todo toggleCompleted={this.props.toggleCompleted} key={todo.id} todo={todo}/>
+                    const query = new RegExp(this.props.query, "gi");
+                    if(todo.task.search(query) >= 0)
+                        return <Todo toggleCompleted={this.props.toggleCompleted} key={todo.id} todo={todo}/>
                 })}
             </main>
         )

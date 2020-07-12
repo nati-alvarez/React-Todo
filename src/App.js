@@ -14,7 +14,8 @@ class App extends React.Component {
       todos: JSON.parse(localStorage.getItem("todos")),
       formData: {
         task: ""
-      }
+      },
+      query: ""
     }
   }
   componentDidUpdate = (prevProps, prevState) => {
@@ -64,12 +65,18 @@ class App extends React.Component {
       }
     });
   }
+  updateQuery = e =>{
+    this.setState({
+      ...this.state,
+      query: e.target.value
+    })
+  }
   render() {
     return (
       <div className="app">
         <h2>Todo App!</h2>
-        <TodoForm clearCompleted={this.clearCompleted} createTodo={this.createTodo} formData={this.state.formData} updateFormData={this.updateFormData}/>
-        <TodoList toggleCompleted={this.toggleCompleted} todos={this.state.todos}/>
+        <TodoForm query={this.state.query} updateQuery={this.updateQuery} clearCompleted={this.clearCompleted} createTodo={this.createTodo} formData={this.state.formData} updateFormData={this.updateFormData}/>
+        <TodoList query={this.state.query} toggleCompleted={this.toggleCompleted} todos={this.state.todos}/>
       </div>
     );
   }

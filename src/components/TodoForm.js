@@ -6,6 +6,12 @@ export default class TodoForm extends React.Component {
     }
     render(){
         return (
+            <>
+            <form className="search-form">
+                <label>
+                    Search Todos: <input type="text" onChange={this.props.updateQuery} value={this.props.query}/>
+                </label>
+            </form>
             <form onSubmit={e=>e.preventDefault()}>
                 <label>
                     Enter the task: 
@@ -14,6 +20,7 @@ export default class TodoForm extends React.Component {
                 <button className="create" onClick={this.props.createTodo}>Add Todo</button>
                 <button className="clear" onClick={this.props.clearCompleted}>Clear Completed</button>
             </form>
+            </>
         )
     }
 }
