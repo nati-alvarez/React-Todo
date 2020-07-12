@@ -11,8 +11,8 @@ export default class TodoForm extends React.Component {
                     Enter the task: 
                     <input onChange={this.props.updateFormData} value={this.props.formData.task} type="text" name="task"/>
                 </label>
-                <button onClick={this.props.createTodo}>Add Todo</button>
-                <button onClick={this.props.clearCompleted}>Clear Completed</button>
+                <button className="create" onClick={this.props.createTodo}>Add Todo</button>
+                <button className="clear" onClick={this.props.clearCompleted}>Clear Completed</button>
             </form>
         )
     }

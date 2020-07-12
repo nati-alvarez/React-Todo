@@ -1,7 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
+
+body {
+    background: linear-gradient(#f56ebb,#f5b86e);
+    min-height: 100vh;
+    font-family: sans-serif;
+    margin: 0;
+}
+
+body::after {
+    background: linear-gradient(#f5b86e, #f56ebb);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    content: " ";
+    opacity: 1;
+    animation: swapColor 10000ms linear infinite alternate-reverse;
+}
+
+.app {
+    z-index: 2;
+    position: relative;
+}
+
+h2 {
+    font-family: Knewave;
+    font-size: 4rem;
+    color: white;
+    font-weight: lighter;
+    -webkit-text-stroke: 3px black;
+    text-align: center;
+    margin: 0;
+}
+
+form {
+    background: #e8e4df;
+    padding: 2vh;
+    margin: 0 auto;
+    margin-top: 5vh;
+    max-width: 800px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+form input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    margin: 0px 10px;
+}
+
+button {
+    font-weight: bold;
+    border: none;
+    padding: 5px;
+    margin-right: 5px;
+}
+
+button.create {
+    background:     #f56ebb;
+    color: white;
+}
+
+button.clear {
+    background: #f5b86e;
+    color: white;
+}
+
+.todos {
+    overflow-y: scroll;
+    height: 50vh;
+    padding: 5vh;
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 5vh;
+}
+
+.todos::-webkit-scrollbar {
+    width: 10px;
+}
+  
+  /* Track */
+.todos::-webkit-scrollbar-track {
+    background: rgba(0,0,0, .2);
+    border-radius: 5px;
+}
+  
+  /* Handle */
+.todos::-webkit-scrollbar-thumb {
+    background-color: #3f3f3f;
+    border-radius: 5px;
+}
+
 .todo {
+    border-radius: 5px;
+    background: #e8e4df;
+    margin: 0 auto;
+    padding: 1vh 2vh;
     cursor: pointer;
+    margin-bottom: 2vh;
 }
 
 .todo.completed {
     text-decoration: line-through;
+}
+
+
+@keyframes swapColor {
+    to { opacity: 0;}
 }
