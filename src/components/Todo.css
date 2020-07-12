@@ -70,7 +70,7 @@ button.clear {
 }
 
 .todos {
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 50vh;
     padding: 5vh;
     max-width: 600px;
