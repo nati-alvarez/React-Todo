@@ -9,11 +9,17 @@ class App extends React.Component {
   // this component is going to take care of state, and any change handlers you need to work with your state
   constructor(){
     super();
+    if(!localStorage.getItem("todos"))  localStorage.setItem("todos", '[]');
     this.state = {
-      todos: [],
+      todos: JSON.parse(localStorage.getItem("todos")),
       formData: {
         task: ""
       }
+    }
+  }
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevState.todos !== this.state.todos){
+      localStorage.setItem("todos", JSON.stringify(this.state.todos));
     }
   }
   createTodo = e => {
@@ -31,7 +37,7 @@ class App extends React.Component {
           completed: false
         }
       ]
-    })
+    }); 
   }
   toggleCompleted = id =>{
     this.setState({
